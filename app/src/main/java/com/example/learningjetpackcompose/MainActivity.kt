@@ -4,17 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.learningjetpackcompose.ui.theme.LearningJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +19,12 @@ class MainActivity : ComponentActivity() {
             // NavHost to declare the navigation destinations.
             NavHost(
                 navController = navController,
-                startDestination = Routes.firstScreen,
+                startDestination = Routes.FIRST_SCREEN,
                 builder = {
-                    composable(Routes.firstScreen) {
+                    composable(Routes.FIRST_SCREEN) {
                         FirstScreen(navController)
                     }
-                    composable(Routes.secondScreen) {
+                    composable(Routes.SECOND_SCREEN) {
                         SecondScreen()
                     }
                 })

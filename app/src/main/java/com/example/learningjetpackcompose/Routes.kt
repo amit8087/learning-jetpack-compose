@@ -1,6 +1,6 @@
 package com.example.learningjetpackcompose
 
 object Routes {
-    const val firstScreen = "firstScreen"
-    const val secondScreen = "secondScreen"
+    const val FIRST_SCREEN = "firstScreen"
+    const val SECOND_SCREEN = "secondScreen"
 }

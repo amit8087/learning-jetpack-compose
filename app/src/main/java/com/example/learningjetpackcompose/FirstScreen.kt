@@ -24,7 +24,7 @@ fun FirstScreen(
     ) {
         Text(text = "First Screen")
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { navController.navigate(Routes.secondScreen) }) {
+        Button(onClick = { navController.navigate(Routes.SECOND_SCREEN) }) {
             Text(text = "Next Screen")
         }
     }
