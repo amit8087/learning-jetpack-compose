@@ -7,42 +7,46 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun SecondScreen() {
-    // remember -> Will not save the value after Configuration changes
-    // rememberSaveable -> Will save the value after Configuration changes
-    var name by rememberSaveable {
-        mutableStateOf("")
-    }
+fun SecondScreen(viewModel: StateTestViewModel) {
+
+    val name by viewModel.name.observeAsState("")
+    val age by viewModel.age.observeAsState("")
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        MyText(name)
-        MyTextField(name, onNameChange = {
-            name = it
-        })
+        MyText("$name $age")
+        MyTextField(name,
+            label = "Enter your name",
+            onNameChange = {
+                viewModel.onNameUpdate(it)
+            })
+        MyTextField(age.toString(),
+            label = "Enter your age",
+            onNameChange = {
+                viewModel.onAgeUpdate(it.toInt())
+            })
     }
 }
 
 @Composable
-fun MyTextField(name: String, onNameChange: (String) -> Unit) {
+fun MyTextField(name: String, label: String, onNameChange: (String) -> Unit) {
     OutlinedTextField(
         value = name,
         onValueChange = {
             onNameChange(it)
         },
         label = {
-            Text(text = "Enter your name")
+            Text(label)
         })
 }
 
