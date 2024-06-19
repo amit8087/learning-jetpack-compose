@@ -10,7 +10,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
@@ -25,7 +24,7 @@ fun FirstScreen(
     ) {
         Text(text = "First Screen")
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = { navController.navigate(Routes.secondScreen) }) {
             Text(text = "Next Screen")
         }
     }
